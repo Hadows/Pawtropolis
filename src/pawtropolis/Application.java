@@ -1,10 +1,10 @@
 package pawtropolis;
 
-import pawtropolis.animals.ZooController;
-import pawtropolis.animals.domain.AnimalWithTail;
-import pawtropolis.animals.domain.Eagle;
-import pawtropolis.animals.domain.Lion;
-import pawtropolis.animals.domain.Tiger;
+import lecivette.animals.ZooController;
+import lecivette.animals.domain.AnimalWithTail;
+import lecivette.animals.domain.Eagle;
+import lecivette.animals.domain.Lion;
+import lecivette.animals.domain.Tiger;
 import pawtropolis.game.GameController;
 import pawtropolis.game.domain.Player;
 import pawtropolis.map.domain.Room;

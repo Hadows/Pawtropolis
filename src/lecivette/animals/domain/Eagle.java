@@ -1,4 +1,4 @@
-package pawtropolis.animals.domain;
+package lecivette.animals.domain;
 
 import java.time.LocalDate;
 

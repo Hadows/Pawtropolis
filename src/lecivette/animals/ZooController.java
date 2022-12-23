@@ -1,6 +1,6 @@
-package pawtropolis.animals;
+package lecivette.animals;
 
-import pawtropolis.animals.domain.*;
+import lecivette.animals.domain.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -57,7 +57,7 @@ public class ZooController {
 		return animalWithLongestTail;
 	}
 
-	// ci saranno sempre solo aquile tra gli animali con le ali? ;)
+	//ci saranno sempre solo aquile tra gli animali con le ali?
 	public Eagle getEagleWithWidestWingspan() {
 		if (eagles.isEmpty()) {
 			return null;
