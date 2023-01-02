@@ -7,7 +7,7 @@ import lecivette.animals.domain.Lion;
 import lecivette.animals.domain.Tiger;
 import pawtropolis.game.GameController;
 import pawtropolis.game.domain.Player;
-import pawtropolis.map.domain.Room;
+import lecivette.game.map.Room;
 
 import java.time.LocalDate;
 

@@ -1,4 +1,4 @@
-package pawtropolis.map.domain;
+package lecivette.game.map;
 
 public class Room {
 	/*

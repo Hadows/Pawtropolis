@@ -14,11 +14,13 @@ public abstract class Animal {
 		this.joinDate = joinDate;
 		this.weight = weight;
 		this.height = height;
+		this.isAlive = true;
 	}
 
 	private LocalDate joinDate;
 	private double weight;
 	private double height;
+	private boolean isAlive;
 
 	public String getName() {
 		return name;
@@ -66,5 +68,8 @@ public abstract class Animal {
 
 	public void setHeight(double height) {
 		this.height = height;
+	}
+	public void setAlive(boolean isAlive){
+		this.isAlive = isAlive;
 	}
 }

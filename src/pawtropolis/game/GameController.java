@@ -2,7 +2,7 @@ package pawtropolis.game;
 
 import pawtropolis.game.console.InputController;
 import pawtropolis.game.domain.Player;
-import pawtropolis.map.domain.Room;
+import lecivette.game.map.Room;
 
 public class GameController {
 
