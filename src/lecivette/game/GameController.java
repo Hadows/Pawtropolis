@@ -63,6 +63,7 @@ public class GameController {
 		}
 	}
 
+	// TODO: incapsulare i controlli in classe room
 	private String go(String playerDirection){
 		List<String> checkDirection = entry.getDirections().stream().map(Direction::name)
 				.filter(direction -> direction.equals(playerDirection)).collect(Collectors.toList());
