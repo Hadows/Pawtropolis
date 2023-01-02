@@ -2,13 +2,10 @@ package lecivette.game.map;
 
 import lecivette.animals.domain.Animal;
 import lecivette.game.domain.Item;
-import lombok.extern.java.Log;
-import lombok.extern.log4j.Log4j;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.logging.Logger;
 
 public class Room {
 	private final String nameRoom;

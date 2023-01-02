@@ -1,10 +1,7 @@
 package lecivette;
 
 import lecivette.animals.ZooController;
-import lecivette.animals.domain.AnimalWithTail;
-import lecivette.animals.domain.Eagle;
-import lecivette.animals.domain.Lion;
-import lecivette.animals.domain.Tiger;
+import lecivette.animals.domain.*;
 import lecivette.game.GameController;
 import lecivette.game.domain.Bag;
 import lecivette.game.domain.Item;
@@ -35,70 +32,58 @@ public class Application {
 	private static void testZoo() {
 		ZooController zooController = new ZooController();
 
-		Lion lion1 = new Lion("Simba", "mango", 3, LocalDate.now(), 10.9, 1.1, 0.5);
-		Lion lion2 = new Lion("Kimba", "caffè Kimbo", 5, LocalDate.now(), 13, 0.7, 0.9);
-		Lion lion3 = new Lion("Cane Fifone", "Torta di Marilù", 10, LocalDate.now(), 8, 1.1, 6.21);
+		zooController.addAnimal(new Lion("Simba", "mango", 3, LocalDate.now(), 10.9, 1.1, 0.5));
+		zooController.addAnimal(new Lion("Kimba", "caffè Kimbo", 5, LocalDate.now(), 13, 0.7, 0.9));
+		zooController.addAnimal(new Lion("Cane Fifone", "Torta di Marilù", 10, LocalDate.now(), 8, 1.1, 6.21));
 
-		zooController.addAnimal(lion1);
-		zooController.addAnimal(lion2);
-		zooController.addAnimal(lion3);
+		zooController.addAnimal(new Tiger("Man", "pizza", 30, LocalDate.now(), 80, 1.8, 0.3));
+		zooController.addAnimal(new Tiger("Tigro", "miele", 8, LocalDate.now(), 20, 1, 0.7));
+		zooController.addAnimal(new Tiger("Asdrubale", "carbonara", 27, LocalDate.now(), 70, 1.7, 1));
 
-		Tiger tiger1 = new Tiger("Man", "pizza", 30, LocalDate.now(), 80, 1.8, 0.3);
-		Tiger tiger2 = new Tiger("Tigro", "miele", 8, LocalDate.now(), 20, 1, 0.7);
-		Tiger tiger3 = new Tiger("Asdrubale", "carbonara", 27, LocalDate.now(), 70, 1.7, 1);
-
-		zooController.addAnimal(tiger1);
-		zooController.addAnimal(tiger2);
-		zooController.addAnimal(tiger3);
-
-		Eagle eagle1 = new Eagle("Piccione", "pane", 1, LocalDate.now(), 1, 0.2, 0.3);
-		Eagle eagle2 = new Eagle("Zazu", "marmellata", 9, LocalDate.now(), 2, 0.3, 0.5);
-		Eagle eagle3 = new Eagle("Daily Eagle", "hot dog", 50, LocalDate.now(), 30, 1, 2);
-
-		zooController.addAnimal(eagle1);
-		zooController.addAnimal(eagle2);
-		zooController.addAnimal(eagle3);
+		zooController.addAnimal(new Eagle("Piccione", "pane", 1, LocalDate.now(), 1, 0.2, 0.3));
+		zooController.addAnimal(new Eagle("Zazu", "marmellata", 9, LocalDate.now(), 2, 0.3, 0.5));
+		zooController.addAnimal(new Eagle("Daily Eagle", "hot dog", 50, LocalDate.now(), 30, 1, 2));
 
 		AnimalWithTail animalWithLongestTail = zooController.getAnimalWithLongestTail();
 		System.out.println("Animal with longest tail: " + animalWithLongestTail.getName());
 
-		Eagle eagleWithWidestWingspan = zooController.getEagleWithWidestWingspan();
-		System.out.println("Eagle with widest wingspan: " + eagleWithWidestWingspan.getName());
+		AnimalWithWings animalWithWidestWingspan = zooController.getAnimalWithWidestWingspan();
+		System.out.println("Animal with widest wingspan: " + animalWithWidestWingspan.getName());
 
-		Tiger tallestTiger = zooController.getTallestTiger();
+		Tiger tallestTiger = zooController.getTallestAnimalByClass(Tiger.class);
 		System.out.println("Tallest tiger: " + tallestTiger.getName());
 
-		Tiger shortestTiger = zooController.getShortestTiger();
+		Tiger shortestTiger = zooController.getShortestAnimalByClass(Tiger.class);
 		System.out.println("Shortest tiger: " + shortestTiger.getName());
 
-		Lion tallestLion = zooController.getTallestLion();
+		Lion tallestLion = zooController.getTallestAnimalByClass(Lion.class);
 		System.out.println("Tallest lion: " + tallestLion.getName());
 
-		Lion shortestLion = zooController.getShortestLion();
+		Lion shortestLion = zooController.getShortestAnimalByClass(Lion.class);
 		System.out.println("Shortest lion: " + shortestLion.getName());
 
-		Eagle tallestEagle = zooController.getTallestEagle();
+		Eagle tallestEagle = zooController.getTallestAnimalByClass(Eagle.class);
 		System.out.println("Tallest eagle: " + tallestEagle.getName());
 
-		Eagle shortestEagle = zooController.getShortestEagle();
+		Eagle shortestEagle = zooController.getShortestAnimalByClass(Eagle.class);
 		System.out.println("Shortest eagle: " + shortestEagle.getName());
 
-		Tiger heaviestTiger = zooController.getHeaviestTiger();
+		Tiger heaviestTiger = zooController.getHeaviestAnimalByClass(Tiger.class);
 		System.out.println("Heaviest tiger: " + heaviestTiger.getName());
 
-		Tiger lightestTiger = zooController.getLightestTiger();
+		Tiger lightestTiger = zooController.getLightestAnimalByClass(Tiger.class);
 		System.out.println("Lightest tiger: " + lightestTiger.getName());
 
-		Lion heaviestLion = zooController.getHeaviestLion();
+		Lion heaviestLion = zooController.getHeaviestAnimalByClass(Lion.class);
 		System.out.println("Heaviest lion: " + heaviestLion.getName());
 
-		Lion lightestLion = zooController.getLightestLion();
+		Lion lightestLion = zooController.getLightestAnimalByClass(Lion.class);
 		System.out.println("Lightest lion: " + lightestLion.getName());
 
-		Eagle heaviestEagle = zooController.getHeaviestEagle();
+		Eagle heaviestEagle = zooController.getHeaviestAnimalByClass(Eagle.class);
 		System.out.println("Heaviest eagle: " + heaviestEagle.getName());
 
-		Eagle lightestEagle = zooController.getLightestEagle();
+		Eagle lightestEagle = zooController.getLightestAnimalByClass(Eagle.class);
 		System.out.println("Lightest eagle: " + lightestEagle.getName());
 	}
 }
