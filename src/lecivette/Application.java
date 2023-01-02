@@ -1,20 +1,29 @@
-package pawtropolis;
+package lecivette;
 
 import lecivette.animals.ZooController;
 import lecivette.animals.domain.AnimalWithTail;
 import lecivette.animals.domain.Eagle;
 import lecivette.animals.domain.Lion;
 import lecivette.animals.domain.Tiger;
-import pawtropolis.game.GameController;
-import pawtropolis.game.domain.Player;
+import lecivette.game.GameController;
+import lecivette.game.domain.Bag;
+import lecivette.game.domain.Item;
+import lecivette.game.domain.Player;
 import lecivette.game.map.Room;
 
+
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Application {
 
 	public static void main(String[] args) {
-		Player player = new Player("Alessandro", 100);
+		Item i = new Item("Forbici", "Taglia tutto", 1);
+		List<Item> items = new ArrayList<>();
+		items.add(i);
+		Bag bag = new Bag(items, 3);
+		Player player = new Player("Alessandro", 100, bag);
 		Room entry = new Room("Stanza-1");
 		GameController gameController = new GameController(entry, player);
 		gameController.runGame();
