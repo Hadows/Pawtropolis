@@ -1,7 +1,7 @@
 package lecivette.game.domain;
 
 public class Player {
-	private String name;
+	private final String name;
 	private int lifePoints;
 
 	private Bag bag;

@@ -5,11 +5,11 @@ import lecivette.game.domain.Item;
 import lombok.extern.java.Log;
 import lombok.extern.log4j.Log4j;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.logging.Logger;
 
-@Log4j
 public class Room {
 	private final String nameRoom;
 	private List<Item> itemList;
@@ -18,6 +18,7 @@ public class Room {
 
 	public Room(String nameRoom){
 		this.nameRoom = nameRoom;
+		connectedRooms = new HashMap<>();
 	}
 
 	public List<Direction> getDirections(){
@@ -34,9 +35,12 @@ public class Room {
 	}
 
 	// TODO: Gestire i casi null
-	public Room getRoom(Direction direction){
-		if(connectedRooms.containsKey(direction)){
-			return connectedRooms.get(direction);
+	public Room getRoom(String direction){
+
+		Direction roomDirection = Direction.valueOf(direction);
+
+		if(connectedRooms.containsKey(roomDirection)){
+			return connectedRooms.get(roomDirection);
 		}
 		return null;
 	}

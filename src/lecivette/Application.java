@@ -23,7 +23,7 @@ public class Application {
 		List<Item> items = new ArrayList<>();
 		items.add(i);
 		Bag bag = new Bag(items, 3);
-		Player player = new Player("Alessandro", 100, bag);
+		Player player = new Player("Sherlock Owl", 100, bag);
 		Room entry = new Room("Stanza-1");
 		GameController gameController = new GameController(entry, player);
 		gameController.runGame();

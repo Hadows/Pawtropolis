@@ -1,8 +1,13 @@
 package lecivette.game;
 
 import lecivette.game.domain.Player;
+import lecivette.game.map.Direction;
 import lecivette.game.map.Room;
 import pawtropolis.game.console.InputController;
+
+import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;
 
 
 public class GameController {
@@ -19,20 +24,55 @@ public class GameController {
 		Room currentRoom = entry;
 		boolean gameEnded = false;
 
+		System.out.println("Robin: Welcome to pawtropolis. You are in a room, take a look around");
 		while(!gameEnded) {
 			String input;
-			System.out.println("Where are you going to go?");
+			String[] command;
 			System.out.print(">");
 			input = InputController.readString();
+			command = input.split(" ");
 
-			/*
-			* Inserire qui la gestione degli altri comandi
-			*/
-
-
+			// TODO: gestire meglio i controlli sull'input errato
 			if (input.equals("exit")) {
 				gameEnded = true;
+				System.out.println("Robin: bye Sherlock :)");
+				continue;
 			}
+			if (command.length != 2){
+				System.out.println("Robin: what are you doing Sherlock Owl!");
+				continue;
+			}
+
+			switch(command[0]){
+				case "go":
+					System.out.println(go(command[1]));
+					break;
+				case "look":
+					break;
+				case "bag":
+					break;
+				case "get":
+					break;
+				case "drop":
+					break;
+				default:
+					System.out.println("Robin: what are you doing Sherlock Owl!");
+			}
+
+
+		}
+	}
+
+	private String go(String playerDirection){
+		List<String> checkDirection = entry.getDirections().stream().map(Direction::name)
+				.filter(direction -> direction.equals(playerDirection)).collect(Collectors.toList());
+		if (checkDirection.isEmpty()){
+			return "Robin: You cannot go in that direction!";
+		}
+		else
+		{
+			entry = entry.getRoom(playerDirection);
+			return "Robin: We are moving to " + entry.getNameRoom() + " room";
 		}
 	}
 }
