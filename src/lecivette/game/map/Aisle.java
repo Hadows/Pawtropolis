@@ -1,5 +1,5 @@
 package lecivette.game.map;
 
-public class Corridoio {
+public class Aisle {
     //se 0 le stanze saranno adiacenti
 }

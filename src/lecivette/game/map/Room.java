@@ -2,69 +2,62 @@ package lecivette.game.map;
 
 import lecivette.animals.domain.Animal;
 import lecivette.game.domain.Item;
+import lombok.extern.java.Log;
+import lombok.extern.log4j.Log4j;
 
 import java.util.List;
+import java.util.Map;
+import java.util.logging.Logger;
 
+@Log4j
 public class Room {
-
-	private String nameRoom;
+	private final String nameRoom;
 	private List<Item> itemList;
 	private List<Animal> animalList;
-	private Room roomNord, roomSud, roomEast, roomWest;
+	private Map<Direction, Room> connectedRooms;
 
 	public Room(String nameRoom){
 		this.nameRoom = nameRoom;
 	}
 
-	public String getNameRoom() {
-		return nameRoom;
+	public List<Direction> getDirections(){
+		return connectedRooms.keySet().stream().toList();
+	}
+
+	public void addRoom(Direction direction, Room room){
+		if(connectedRooms.containsKey(direction)){
+			System.out.println("Esiste già una stanza in direzione " + direction);
+		}
+		else{
+			connectedRooms.put(direction, room);
+		}
+	}
+
+	// TODO: Gestire i casi null
+	public Room getRoom(Direction direction){
+		if(connectedRooms.containsKey(direction)){
+			return connectedRooms.get(direction);
+		}
+		return null;
 	}
 
 	public List<Item> getItemList() {
 		return itemList;
 	}
 
-	public List<Animal> getAnimalList() {
-		return animalList;
-	}
-
-	public Room getRoomNord() {
-		return roomNord;
-	}
-
-	public Room getRoomSud() {
-		return roomSud;
-	}
-
-	public Room getRoomEast() {
-		return roomEast;
-	}
-
-	public Room getRoomWest() {
-		return roomWest;
-	}
-
 	public void setItemList(List<Item> itemList) {
 		this.itemList = itemList;
+	}
+
+	public List<Animal> getAnimalList() {
+		return animalList;
 	}
 
 	public void setAnimalList(List<Animal> animalList) {
 		this.animalList = animalList;
 	}
 
-	public void setRoomNord(Room roomNord) {
-		this.roomNord = roomNord;
-	}
-
-	public void setRoomSud(Room roomSud) {
-		this.roomSud = roomSud;
-	}
-
-	public void setRoomEast(Room roomEast) {
-		this.roomEast = roomEast;
-	}
-
-	public void setRoomWest(Room roomWest) {
-		this.roomWest = roomWest;
+	public String getNameRoom() {
+		return nameRoom;
 	}
 }
