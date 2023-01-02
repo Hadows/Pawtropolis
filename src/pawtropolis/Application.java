@@ -14,7 +14,7 @@ import java.time.LocalDate;
 public class Application {
 
 	public static void main(String[] args) {
-		Player player = new Player();
+		Player player = new Player("Alessandro", 100);
 		Room entry = new Room();
 		GameController gameController = new GameController(entry, player);
 		gameController.runGame();
