@@ -1,9 +1,9 @@
 package lecivette.game;
 
+import lecivette.game.console.InputController;
 import lecivette.game.domain.Player;
 import lecivette.game.map.Direction;
 import lecivette.game.map.Room;
-import pawtropolis.game.console.InputController;
 
 import java.util.Collections;
 import java.util.List;
