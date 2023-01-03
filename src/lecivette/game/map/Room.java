@@ -11,10 +11,12 @@ public class Room {
 	private String nameRoom;
 	private List<Item> itemList;
 	private List<Animal> animalList;
+	private boolean isCorridor;
 	private Map<Direction, Room> connectedRooms;
 
 	public Room(){
 		connectedRooms = new HashMap<>();
+		isCorridor = false;
 	}
 
 	public List<Direction> getDirections(){
@@ -59,5 +61,13 @@ public class Room {
 
 	public String getNameRoom() {
 		return nameRoom;
+	}
+
+	public boolean isCorridor() {
+		return isCorridor;
+	}
+
+	public void setCorridor(boolean corridor) {
+		isCorridor = corridor;
 	}
 }

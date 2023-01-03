@@ -6,6 +6,7 @@ import lecivette.game.GameController;
 import lecivette.game.domain.Bag;
 import lecivette.game.domain.Item;
 import lecivette.game.domain.Player;
+import lecivette.game.map.Map;
 import lecivette.game.map.Room;
 
 
@@ -21,8 +22,8 @@ public class Application {
 		items.add(i);
 		Bag bag = new Bag(items, 3);
 		Player player = new Player("Sherlock Owl", 100, bag);
-		Room entry = new Room();
-		GameController gameController = new GameController(entry, player);
+		Map map = new Map(4, 1);
+		GameController gameController = new GameController(map.getInialRoom(), player);
 		gameController.runGame();
 
 		// de-commentare per testare tutte le funzionalità della classe ZooController

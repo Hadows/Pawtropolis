@@ -5,23 +5,22 @@ import lecivette.game.domain.Player;
 import lecivette.game.map.Direction;
 import lecivette.game.map.Room;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
 
 public class GameController {
 
-	private Room entry;
+	private Room currentRoom;
 	private Player player;
 
-	public GameController(Room entry, Player player) {
-		this.entry = entry;
+	public GameController(Room currentRoom, Player player) {
+		this.currentRoom = currentRoom;
 		this.player = player;
 	}
 
 	public void runGame() {
-		Room currentRoom = entry;
+		Room currentRoom = this.currentRoom;
 		boolean gameEnded = false;
 
 		System.out.println("Robin: Welcome to pawtropolis. You are in a room, take a look around");
@@ -48,6 +47,7 @@ public class GameController {
 					System.out.println(go(command[1]));
 					break;
 				case "look":
+					System.out.println(look());
 					break;
 				case "bag":
 					break;
@@ -65,15 +65,21 @@ public class GameController {
 
 	// TODO: incapsulare i controlli in classe room
 	private String go(String playerDirection){
-		List<String> checkDirection = entry.getDirections().stream().map(Direction::name)
+		List<String> checkDirection = currentRoom.getDirections().stream().map(Direction::name)
 				.filter(direction -> direction.equals(playerDirection)).collect(Collectors.toList());
 		if (checkDirection.isEmpty()){
 			return "Robin: You cannot go in that direction!";
 		}
 		else
 		{
-			entry = entry.getRoom(playerDirection);
-			return "Robin: We are moving to " + entry.getNameRoom() + " room";
+			currentRoom = currentRoom.getRoom(playerDirection);
+			return "Robin: We are moving to " + currentRoom.getNameRoom() + " room";
 		}
+	}
+
+	private String look(){
+		List<Direction> directions = currentRoom.getDirections();
+
+		return ("You look around, the direction that you can take are: " + directions);
 	}
 }
