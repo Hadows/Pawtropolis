@@ -1,7 +1,9 @@
 package lecivette.game.map;
 
+import lecivette.game.config.ContainerItems;
+import lecivette.game.domain.Item;
+
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
@@ -11,6 +13,7 @@ public class Map {
 
         List<Room> rooms;
         Room centralRoom;
+        Random rand;
 
         public Cluster(int seed){
             centralRoom = new Room();
@@ -21,7 +24,8 @@ public class Map {
 
         private void populateCluster(int seed){
             //TODO: aggiungere nomi delle classi man mano che si generano/collegano
-            Random rand = new Random();
+            //TODO: aggiungere animali a random nelle stanze
+            rand = new Random();
             rand.setSeed(seed);
 
             Room currentRoom = centralRoom;
@@ -53,6 +57,12 @@ public class Map {
                             break;
                     }
 
+                    int itemNumberOnRoom=rand.nextInt(1,3);
+                    List<Item> item = new ArrayList<>();
+                    for(int j=0; j<itemNumberOnRoom;j++) {
+                        item.add(ContainerItems.getItem().get(j));
+                    }
+                    currentRoom.setItemList(item);
                     currentRoom.addRoom(directionListCopy.get(direction), newRoom);
                     directionListCopy.remove(direction);
 
@@ -155,5 +165,7 @@ public class Map {
     public Room getInialRoom(){
         return clusterList.get(0).centralRoom;
     }
+
+
 }
 

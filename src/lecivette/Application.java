@@ -7,8 +7,6 @@ import lecivette.game.domain.Bag;
 import lecivette.game.domain.Item;
 import lecivette.game.domain.Player;
 import lecivette.game.map.Map;
-import lecivette.game.map.Room;
-
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -20,15 +18,13 @@ public class Application {
 		Item i = new Item("Forbici", "Taglia tutto", 1);
 		List<Item> items = new ArrayList<>();
 		items.add(i);
-		Bag bag = new Bag(items, 3);
+		Bag bag = new Bag(items, 2);
 		Player player = new Player("Sherlock Owl", 100, bag);
 		Map map = new Map(4, 1);
 		GameController gameController = new GameController(map.getInialRoom(), player);
 		gameController.runGame();
-
-		// de-commentare per testare tutte le funzionalità della classe ZooController
-		// testZoo();
 	}
+
 
 	private static void testZoo() {
 		ZooController zooController = new ZooController();
@@ -86,5 +82,7 @@ public class Application {
 
 		Eagle lightestEagle = zooController.getLightestAnimalByClass(Eagle.class);
 		System.out.println("Lightest eagle: " + lightestEagle.getName());
+
+
 	}
 }
