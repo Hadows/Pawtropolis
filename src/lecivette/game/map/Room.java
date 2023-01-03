@@ -8,13 +8,12 @@ import java.util.List;
 import java.util.Map;
 
 public class Room {
-	private final String nameRoom;
+	private String nameRoom;
 	private List<Item> itemList;
 	private List<Animal> animalList;
 	private Map<Direction, Room> connectedRooms;
 
-	public Room(String nameRoom){
-		this.nameRoom = nameRoom;
+	public Room(){
 		connectedRooms = new HashMap<>();
 	}
 

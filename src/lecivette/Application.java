@@ -21,7 +21,7 @@ public class Application {
 		items.add(i);
 		Bag bag = new Bag(items, 3);
 		Player player = new Player("Sherlock Owl", 100, bag);
-		Room entry = new Room("Stanza-1");
+		Room entry = new Room();
 		GameController gameController = new GameController(entry, player);
 		gameController.runGame();
 
