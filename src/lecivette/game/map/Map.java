@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
+//TODO: provare semplificare codice, generalizzandolo per ogni cluster (parti di codice ripetute)
 public class Map {
     class Cluster{
 
@@ -19,6 +20,7 @@ public class Map {
         }
 
         private void populateCluster(int seed){
+            //TODO: aggiungere nomi delle classi man mano che si generano/collegano
             Random rand = new Random();
             rand.setSeed(seed);
 
