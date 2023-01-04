@@ -1,5 +1,7 @@
 package lecivette.game.map;
 
+import lecivette.animals.domain.Animal;
+import lecivette.game.config.ContainerAnimals;
 import lecivette.game.config.ContainerItems;
 import lecivette.game.domain.Item;
 
@@ -57,23 +59,35 @@ public class Map {
                             break;
                     }
 
-                    int itemNumberOnRoom=rand.nextInt(1,3);
+                    //add items in rooms
+                    int numberIfItemsOnRoom=rand.nextInt(1,3);
                     List<Item> item = new ArrayList<>();
-                    for(int j=0; j<itemNumberOnRoom;j++) {
+                    for(int j=0; j<numberIfItemsOnRoom;j++) {
                         item.add(ContainerItems.getItem().get(j));
                     }
                     currentRoom.setItemList(item);
+
+                    //add animals in room
+                    int numberOfAnimalsOnRoom=rand.nextInt(1,3);
+                    List<Animal> animal = new ArrayList<>();
+                    for(int k=0; k<numberOfAnimalsOnRoom;k++) {
+                        animal.add(ContainerAnimals.getAnimals().get(k));
+                    }
+
+                    currentRoom.setAnimalList(animal);
                     currentRoom.addRoom(directionListCopy.get(direction), newRoom);
                     directionListCopy.remove(direction);
 
                     rooms.add(newRoom);
                 }
+                //add animals in rooms
+            }
 
                 int direction = rand.nextInt(0, currentRoom.getDirections().size());
                 currentRoom = currentRoom.getRoom(currentRoom.getDirections().get(direction).name());
             }
         }
-    }
+
     List<Cluster> clusterList;
     List<Room> corridors;
 

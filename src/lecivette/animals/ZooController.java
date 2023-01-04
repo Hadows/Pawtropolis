@@ -71,4 +71,8 @@ private final Map<Class<? extends Animal>, List<Animal>> animals;
 				.min(Comparator.comparing(Animal::getWeight))
 				.orElse(null);
 	}
+
+	public List<Animal> getAnimals(){
+		return this.animals.values().stream().flatMap(List::stream).collect(Collectors.toList());
+	}
 }
