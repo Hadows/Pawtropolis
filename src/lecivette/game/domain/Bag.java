@@ -18,6 +18,8 @@ public class Bag {
 	public int getSlots() {
 		return slots;
 	}
+
+	//TODO: aggiungere controllo sulla numerazione restante di slots in bag
 	public void addItem(Item item){
 		items.add(item);
 	}

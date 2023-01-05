@@ -25,8 +25,9 @@ public class Map {
         }
 
         private void populateCluster(int seed){
-            //TODO: aggiungere nomi delle classi man mano che si generano/collegano
-            //TODO: aggiungere animali a random nelle stanze
+            //TODO: aggiungere nomi delle room man mano che si generano/collegano le stesse
+            //TODO: decidere chi e come dare nome alla stanza (noi o giocatore prima di giocare)
+            //TODO: aggiungere animali e oggetti a random nelle stanze (n.stanze già randomizzate)
             rand = new Random();
             rand.setSeed(seed);
 
