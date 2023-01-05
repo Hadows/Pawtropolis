@@ -96,7 +96,7 @@ public class GameController {
 		Item save = null;
 		for(Item i: ContainerItems.getItem()){
 			if(i.getName().equalsIgnoreCase(item))
-				return (player.getBag().addItem(i)) ? "": "";
+				return (player.getBag().addItem(i)) ? "Added " + item: "Not Added " + item;
 		}
 		return "Item not exist";
 	}
@@ -105,7 +105,7 @@ public class GameController {
 		Item save = null;
 		for(Item i: player.getBag().getItems()){
 			if(i.getName().equalsIgnoreCase(item))
-				return (player.getBag().removeItems(i)) ? "": "";
+				return (player.getBag().removeItems(i)) ? "Removed " + item: "Not Removed " + item;
 		}
 		return "Bag Empty";
 	}
