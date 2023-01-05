@@ -36,7 +36,7 @@ public class Map {
             while (rooms.size() <= roomsNumer){
                 ArrayList<Direction> directionList = new ArrayList<>(List.of((Direction.values())));
                 directionList.removeAll(currentRoom.getDirections());
-                int adiacentRooms = rand.nextInt(1, directionList.size() + 1);
+                int adiacentRooms = rand.nextInt(1, (directionList.size()+1));
 
                 List<Direction> directionListCopy = new ArrayList<>();
                 directionListCopy.addAll(directionList);
@@ -81,11 +81,11 @@ public class Map {
 
                     rooms.add(newRoom);
                 }
-                //add animals in rooms
             }
 
-                int direction = rand.nextInt(0, currentRoom.getDirections().size());
-                currentRoom = currentRoom.getRoom(currentRoom.getDirections().get(direction).name());
+            int direction = rand.nextInt(0, currentRoom.getDirections().size());
+            currentRoom = currentRoom.getRoom(currentRoom.getDirections().get(direction).name());
+
             }
         }
 

@@ -1,6 +1,8 @@
 package lecivette.game;
 
+import lecivette.game.config.ContainerItems;
 import lecivette.game.console.InputController;
+import lecivette.game.domain.Item;
 import lecivette.game.domain.Player;
 import lecivette.game.map.Direction;
 import lecivette.game.map.Room;
@@ -51,10 +53,13 @@ public class GameController {
 					System.out.println(look());
 					break;
 				case "bag":
+					System.out.println(bag());
 					break;
 				case "get":
+					System.out.println(get(command[1]));
 					break;
 				case "drop":
+					System.out.println(drop(command[1]));
 					break;
 				default:
 					System.out.println("Robin: what are you doing Sherlock Owl!");
@@ -83,4 +88,27 @@ public class GameController {
 
 		return ("You look around, the direction that you can take are: " + directions);
 	}
+
+	private String bag() {
+		return player.getBag().getItems().toString();
+	}
+
+	private String get(String item){
+		Item save = null;
+		for(Item i: ContainerItems.getItem()){
+			if(i.getName().equalsIgnoreCase(item))
+				return (player.getBag().addItem(i)) ? "": "";
+		}
+		return "Item not exist";
+	}
+
+	private String drop(String item){
+		Item save = null;
+		for(Item i: player.getBag().getItems()){
+			if(i.getName().equalsIgnoreCase(item))
+				return (player.getBag().removeItems(i)) ? "": "";
+		}
+		return "Bag Empty";
+	}
+
 }

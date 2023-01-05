@@ -20,11 +20,11 @@ public class Bag {
 	}
 
 	//TODO: aggiungere controllo sulla numerazione restante di slots in bag
-	public void addItem(Item item){
-		items.add(item);
+	public boolean addItem(Item item){
+		 return items.add(item);
 	}
 
-	public void removeItems(Item item) {
-		items.remove(item);
+	public boolean removeItems(Item item) {
+		return items.remove(item);
 	}
 }
