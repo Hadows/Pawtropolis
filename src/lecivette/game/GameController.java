@@ -39,20 +39,25 @@ public class GameController {
 				System.out.println("Robin: bye Sherlock :)");
 				continue;
 			}
-			if (command.length != 2){
-				System.out.println("Robin: what are you doing Sherlock Owl!");
-				continue;
-			}
 
-			switch(command[0]){
-				case "go":
-					System.out.println(go(command[1]));
-					break;
+
+			switch(input){
 				case "look":
 					System.out.println(look());
 					break;
 				case "bag":
 					System.out.println(bag());
+					break;
+				default:
+					break;
+			}
+			if (command.length != 2){
+				System.out.println("Robin: what are you doing Sherlock Owl!");
+				continue;
+			}
+			switch(command[0]){
+				case "go":
+					System.out.println(go(command[1]));
 					break;
 				case "get":
 					System.out.println(get(command[1]));
@@ -63,8 +68,6 @@ public class GameController {
 				default:
 					System.out.println("Robin: what are you doing Sherlock Owl!");
 			}
-
-
 		}
 	}
 
@@ -73,19 +76,23 @@ public class GameController {
 		List<String> checkDirection = currentRoom.getDirections().stream().map(Direction::name)
 				.filter(direction -> direction.equals(playerDirection)).collect(Collectors.toList());
 		if (checkDirection.isEmpty()){
-			return "Robin: You cannot go in that direction!";
+			return "\nRobin: You cannot go in that direction!";
 		}
 		else
 		{
 			currentRoom = currentRoom.getRoom(playerDirection);
-			return "Robin: We are moving to " + currentRoom.getNameRoom() + " room";
+			return "\nRobin: We are moving to " + currentRoom.getNameRoom() + " room"+
+					"\nItems: " + currentRoom.getItemList().toString() +
+					"\nNPC: " + currentRoom.getAnimalList().toString();
 		}
 	}
 
 	private String look(){
 		List<Direction> directions = currentRoom.getDirections();
 
-		return ("You look around, the direction that you can take are: " + directions);
+		return ("\nYou look around, the direction that you can take are: " + directions +
+				"\nItems: " + currentRoom.getItemList().toString() +
+				"\nNPC: " + currentRoom.getAnimalList().toString());
 	}
 
 	private String bag() {
@@ -94,20 +101,24 @@ public class GameController {
 
 	private String get(String item){
 		Item save = null;
-		for(Item i: ContainerItems.getItem()){
-			if(i.getName().equalsIgnoreCase(item))
-				return (player.getBag().addItem(i)) ? "Added " + item: "Not Added " + item;
+		for(Item i: currentRoom.getItemList()){
+			if(i.getName().equalsIgnoreCase(item)){
+				currentRoom.getItemList().remove(i);
+				return (player.getBag().addItem(i)) ? "\nAdded " + item: "\nNot Added " + item;
+			}
+
 		}
-		return "Item not exist";
+		return "\nItem not exist";
 	}
 
 	private String drop(String item){
 		Item save = null;
 		for(Item i: player.getBag().getItems()){
 			if(i.getName().equalsIgnoreCase(item))
-				return (player.getBag().removeItems(i)) ? "Removed " + item: "Not Removed " + item;
+				currentRoom.getItemList().add(i);
+				return (player.getBag().removeItems(i)) ? "\nRemoved " + item: "\nNot Removed " + item;
 		}
-		return "Bag Empty";
+		return "\nBag Empty";
 	}
 
 }

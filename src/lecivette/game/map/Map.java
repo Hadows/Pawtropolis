@@ -11,20 +11,20 @@ import java.util.Random;
 
 //TODO: provare semplificare codice, generalizzandolo per ogni cluster (parti di codice ripetute)
 public class Map {
-    class Cluster{
+    class Cluster {
 
         List<Room> rooms;
         Room centralRoom;
         Random rand;
 
-        public Cluster(int seed){
+        public Cluster(int seed) {
             centralRoom = new Room();
             rooms = new ArrayList<Room>();
             rooms.add(centralRoom);
             populateCluster(seed);
         }
 
-        private void populateCluster(int seed){
+        private void populateCluster(int seed) {
             //TODO: aggiungere nomi delle room man mano che si generano/collegano le stesse
             //TODO: decidere chi e come dare nome alla stanza (noi o giocatore prima di giocare)
             //TODO: aggiungere animali e oggetti a random nelle stanze (n.stanze già randomizzate)
@@ -33,19 +33,19 @@ public class Map {
 
             Room currentRoom = centralRoom;
             int roomsNumer = rand.nextInt(3, 11);
-            while (rooms.size() <= roomsNumer){
+            while (rooms.size() <= roomsNumer) {
                 ArrayList<Direction> directionList = new ArrayList<>(List.of((Direction.values())));
                 directionList.removeAll(currentRoom.getDirections());
-                int adiacentRooms = rand.nextInt(1, (directionList.size()+1));
+                int adiacentRooms = rand.nextInt(1, (directionList.size() + 1));
 
                 List<Direction> directionListCopy = new ArrayList<>();
                 directionListCopy.addAll(directionList);
 
-                for (int i = 1; i <= adiacentRooms; i++){
+                for (int i = 1; i <= adiacentRooms; i++) {
                     int direction = rand.nextInt(0, directionListCopy.size());
 
                     Room newRoom = new Room();
-                    switch (directionListCopy.get(direction).name()){
+                    switch (directionListCopy.get(direction).name()) {
                         case "north":
                             newRoom.addRoom(Direction.south, currentRoom);
                             break;
@@ -61,17 +61,17 @@ public class Map {
                     }
 
                     //add items in rooms
-                    int numberIfItemsOnRoom=rand.nextInt(1,3);
+                    int numberIfItemsOnRoom = rand.nextInt(1, 3);
                     List<Item> item = new ArrayList<>();
-                    for(int j=0; j<numberIfItemsOnRoom;j++) {
+                    for (int j = 0; j < numberIfItemsOnRoom; j++) {
                         item.add(ContainerItems.getItem().get(j));
                     }
                     currentRoom.setItemList(item);
 
                     //add animals in room
-                    int numberOfAnimalsOnRoom=rand.nextInt(1,3);
+                    int numberOfAnimalsOnRoom = rand.nextInt(1, 3);
                     List<Animal> animal = new ArrayList<>();
-                    for(int k=0; k<numberOfAnimalsOnRoom;k++) {
+                    for (int k = 0; k < numberOfAnimalsOnRoom; k++) {
                         animal.add(ContainerAnimals.getAnimals().get(k));
                     }
 
@@ -81,13 +81,14 @@ public class Map {
 
                     rooms.add(newRoom);
                 }
-            }
 
-            int direction = rand.nextInt(0, currentRoom.getDirections().size());
-            currentRoom = currentRoom.getRoom(currentRoom.getDirections().get(direction).name());
+
+                int direction = rand.nextInt(0, currentRoom.getDirections().size());
+                currentRoom = currentRoom.getRoom(currentRoom.getDirections().get(direction).name());
 
             }
         }
+    }
 
     List<Cluster> clusterList;
     List<Room> corridors;

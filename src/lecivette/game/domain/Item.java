@@ -21,4 +21,9 @@ public class Item {
 	public int getRequestSlot() {
 		return requestSlot;
 	}
+
+	@Override
+	public String toString() {
+		return name;
+	}
 }

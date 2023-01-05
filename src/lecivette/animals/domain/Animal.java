@@ -86,6 +86,11 @@ public abstract class Animal {
 	}
 
 	@Override
+	public String toString() {
+		return name;
+	}
+
+	@Override
 	public int hashCode() {
 		return Objects.hash(name, favoriteFood, age, joinDate, weight, height);
 	}
