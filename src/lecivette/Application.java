@@ -12,10 +12,9 @@ import java.util.ArrayList;
 public class Application {
 
 	public static void main(String[] args) {
-		Bag bag = new Bag(new ArrayList<Item>(), 3);
-		Player player = new Player("Sherlock Owl", 100, bag);
-		Map map = new Map(4, 1);
-		GameController gameController = new GameController(map.getInialRoom(), player);
+		GameController gameController = new GameController( new Map(4, 2).getInialRoom(),
+															new Player("Sherlock Owl", 100,
+																	new Bag(new ArrayList<Item>(), 3)));
 		gameController.runGame();
 	}
 }

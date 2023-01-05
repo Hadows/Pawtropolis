@@ -40,15 +40,12 @@ public class GameController {
 				continue;
 			}
 
-
 			switch(input){
 				case "look":
 					System.out.println(look());
 					break;
 				case "bag":
 					System.out.println(bag());
-					break;
-				default:
 					break;
 			}
 			if (command.length != 2){
@@ -103,8 +100,7 @@ public class GameController {
 		Item save = null;
 		for(Item i: currentRoom.getItemList()){
 			if(i.getName().equalsIgnoreCase(item)){
-				currentRoom.getItemList().remove(i);
-				return (player.getBag().addItem(i)) ? "\nAdded " + item: "\nNot Added " + item;
+				return (player.getBag().addItem(i) && currentRoom.getItemList().remove(i)) ? "\nAdded " + item: "\nNot Added " + item;
 			}
 
 		}
@@ -115,8 +111,7 @@ public class GameController {
 		Item save = null;
 		for(Item i: player.getBag().getItems()){
 			if(i.getName().equalsIgnoreCase(item))
-				currentRoom.getItemList().add(i);
-				return (player.getBag().removeItems(i)) ? "\nRemoved " + item: "\nNot Removed " + item;
+				return (player.getBag().removeItems(i) && currentRoom.getItemList().add(i)) ? "\nRemoved " + item: "\nNot Removed " + item;
 		}
 		return "\nBag Empty";
 	}
