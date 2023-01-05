@@ -44,7 +44,6 @@ public class GameController {
 				continue;
 			}
 
-			//TODO: richiamare metodi per vedere bag e per aggiungervi/rimuovervi oggetti
 			switch(command[0]){
 				case "go":
 					System.out.println(go(command[1]));
