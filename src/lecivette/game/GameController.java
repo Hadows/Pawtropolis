@@ -40,30 +40,33 @@ public class GameController {
 				continue;
 			}
 
-			switch(input){
-				case "look":
-					System.out.println(look());
-					break;
-				case "bag":
-					System.out.println(bag());
-					break;
+			if (command.length == 1)
+			{
+				switch(input){
+					case "look":
+						System.out.println(look());
+						break;
+					case "bag":
+						System.out.println(bag());
+						break;
+					default:
+						System.out.println("Robin: what are you doing Sherlock Owl!");
+				}
 			}
-			if (command.length != 2){
-				System.out.println("Robin: what are you doing Sherlock Owl!");
-				continue;
-			}
-			switch(command[0]){
-				case "go":
-					System.out.println(go(command[1]));
-					break;
-				case "get":
-					System.out.println(get(command[1]));
-					break;
-				case "drop":
-					System.out.println(drop(command[1]));
-					break;
-				default:
-					System.out.println("Robin: what are you doing Sherlock Owl!");
+			else {
+				switch(command[0]){
+					case "go":
+						System.out.println(go(command[1]));
+						break;
+					case "get":
+						System.out.println(get(command[1]));
+						break;
+					case "drop":
+						System.out.println(drop(command[1]));
+						break;
+					default:
+						System.out.println("Robin: what are you doing Sherlock Owl!");
+				}
 			}
 		}
 	}
@@ -87,7 +90,7 @@ public class GameController {
 	private String look(){
 		List<Direction> directions = currentRoom.getDirections();
 
-		return ("\nYou look around, the direction that you can take are: " + directions +
+		return ("\nYou look around, the directions that you can take are: " + directions +
 				"\nItems: " + currentRoom.getItemList().toString() +
 				"\nNPC: " + currentRoom.getAnimalList().toString());
 	}
