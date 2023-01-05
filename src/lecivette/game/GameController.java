@@ -1,6 +1,5 @@
 package lecivette.game;
 
-import lecivette.game.config.ContainerItems;
 import lecivette.game.console.InputController;
 import lecivette.game.domain.Item;
 import lecivette.game.domain.Player;
@@ -8,7 +7,6 @@ import lecivette.game.map.Direction;
 import lecivette.game.map.Room;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 
 public class GameController {
@@ -71,10 +69,10 @@ public class GameController {
 		}
 	}
 
-	// TODO: incapsulare i controlli in classe room
+	// TODO: incapsulare "checkDirection" in classe room
 	private String go(String playerDirection){
 		List<String> checkDirection = currentRoom.getDirections().stream().map(Direction::name)
-				.filter(direction -> direction.equals(playerDirection)).collect(Collectors.toList());
+				.filter(direction -> direction.equals(playerDirection)).toList();
 		if (checkDirection.isEmpty()){
 			return "\nRobin: You cannot go in that direction!";
 		}

@@ -3,6 +3,7 @@ package lecivette.game.config;
 import lecivette.game.domain.Item;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class ContainerItems {
@@ -11,6 +12,7 @@ public class ContainerItems {
         items.add (new Item("scissors", "rusty and dirty", 1));
         items.add (new Item("knife", "sharp and unattractive", 1));
         items.add (new Item("rope", "bind and choke",1));
+        Collections.shuffle(items);
         return items;
     }
 }

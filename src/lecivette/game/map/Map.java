@@ -27,7 +27,7 @@ public class Map {
         private void populateCluster(int seed) {
             //TODO: aggiungere nomi delle room man mano che si generano/collegano le stesse
             //TODO: decidere chi e come dare nome alla stanza (noi o giocatore prima di giocare)
-            //TODO: aggiungere animali e oggetti a random nelle stanze (n.stanze già randomizzate)
+            //TODO: aggiungere animali a random nelle stanze (n.stanze già randomizzate, già sistemato per gli oggetti)
             rand = new Random();
             rand.setSeed(seed);
 
@@ -61,9 +61,9 @@ public class Map {
                     }
 
                     //add items in rooms
-                    int numberIfItemsOnRoom = rand.nextInt(1, 3);
+                    int numberOfItemsOnRoom = rand.nextInt(1, 3);
                     List<Item> item = new ArrayList<>();
-                    for (int j = 0; j < numberIfItemsOnRoom; j++) {
+                    for (int j = 0; j < numberOfItemsOnRoom; j++) {
                         item.add(ContainerItems.getItem().get(j));
                     }
                     currentRoom.setItemList(item);

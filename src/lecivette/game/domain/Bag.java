@@ -19,12 +19,21 @@ public class Bag {
 		return slots;
 	}
 
-	//TODO: aggiungere controllo sulla numerazione restante di slots in bag
 	public boolean addItem(Item item){
-		 return items.add(item);
+		if(slots>0) {
+			slots--;
+			return items.add(item);
+		}
+		else
+			return false;
 	}
 
 	public boolean removeItems(Item item) {
-		return items.remove(item);
+		if(items.contains(item)){
+			slots++;
+			return items.remove(item);
+		}
+		else
+			return false;
 	}
 }
