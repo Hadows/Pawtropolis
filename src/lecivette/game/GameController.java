@@ -94,14 +94,25 @@ public class GameController {
 	}
 
 	private String bag() {
-		return player.getBag().getItems().toString();
+		String itemList = player.getBag().getItems().toString();
+		int emptySlots = player.getBag().getSlots();
+
+		if (itemList.equals("[]")){
+			itemList = "";
+		}
+
+		for (int i = 0; i < emptySlots; i++){
+			itemList += "[ ]";
+		}
+
+		return itemList;
 	}
 
 	private String get(String item){
 		Item save = null;
 		for(Item i: currentRoom.getItemList()){
 			if(i.getName().equalsIgnoreCase(item)){
-				return (player.getBag().addItem(i) && currentRoom.getItemList().remove(i)) ? "\nAdded " + item: "\nNot Added " + item;
+				return (player.getBag().addItem(i) && currentRoom.getItemList().remove(i)) ? "\nAdded " + item + " in bag": "\nThe bag is full";
 			}
 
 		}
@@ -112,7 +123,7 @@ public class GameController {
 		Item save = null;
 		for(Item i: player.getBag().getItems()){
 			if(i.getName().equalsIgnoreCase(item))
-				return (player.getBag().removeItems(i) && currentRoom.getItemList().add(i)) ? "\nRemoved " + item: "\nNot Removed " + item;
+				return (player.getBag().removeItems(i) && currentRoom.getItemList().add(i)) ? "\nRemoved " + item: "\nNo item in bag to remove";
 		}
 		return "\nBag Empty";
 	}
