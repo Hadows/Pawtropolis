@@ -3,6 +3,7 @@ package lecivette.game.map;
 import lecivette.animals.domain.Animal;
 import lecivette.game.domain.Item;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -17,6 +18,8 @@ public class Room {
 	public Room(){
 		connectedRooms = new HashMap<>();
 		isCorridor = false;
+		itemList=new ArrayList<>();
+		animalList=new ArrayList<>();
 	}
 
 	public List<Direction> getDirections(){
@@ -59,6 +62,9 @@ public class Room {
 		this.animalList = animalList;
 	}
 
+	public void setNameRoom(String nameRoom) {
+		this.nameRoom = nameRoom;
+	}
 	public String getNameRoom() {
 		return nameRoom;
 	}

@@ -90,7 +90,8 @@ public class GameController {
 
 		return ("\nYou look around, the directions that you can take are: " + directions +
 				"\nItems: " + currentRoom.getItemList().toString() +
-				"\nNPC: " + currentRoom.getAnimalList().toString());
+				"\nNPC: " + currentRoom.getAnimalList().toString() +
+				"\nroom: " + currentRoom.getNameRoom());
 	}
 
 	private String bag() {

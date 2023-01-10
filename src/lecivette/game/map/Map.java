@@ -5,9 +5,7 @@ import lecivette.game.config.ContainerAnimals;
 import lecivette.game.config.ContainerItems;
 import lecivette.game.domain.Item;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 //TODO: provare semplificare codice, generalizzandolo per ogni cluster (parti di codice ripetute)
 public class Map {
@@ -19,15 +17,15 @@ public class Map {
 
         public Cluster(int seed) {
             centralRoom = new Room();
+            centralRoom.setNameRoom("Sherlock's Room");
             rooms = new ArrayList<Room>();
             rooms.add(centralRoom);
             populateCluster(seed);
         }
 
         private void populateCluster(int seed) {
-            //TODO: aggiungere nomi delle room man mano che si generano/collegano le stesse
-            //TODO: decidere chi e come dare nome alla stanza (noi o giocatore prima di giocare)
-            //TODO: aggiungere animali a random nelle stanze (n.stanze già randomizzate, già sistemato per gli oggetti)
+            //TODO: verificare e completare nomi delle room man mano che si generano/collegano le stesse
+            //TODO: fixare nome della stanza centrale per ogni cluster che si crea
             rand = new Random();
             rand.setSeed(seed);
 
@@ -142,6 +140,7 @@ public class Map {
             //connect the two rooms
             Room newCorridor = new Room();
             newCorridor.setCorridor(true);
+            newCorridor.setNameRoom("Corridor");
 
             room1.addRoom(direction1, newCorridor);
             switch (direction1.name()){
@@ -182,6 +181,22 @@ public class Map {
         return clusterList.get(0).centralRoom;
     }
 
-
+    public List<Room> getAllRooms() {
+        List<Room> listRoom = new ArrayList<>();
+        clusterList.forEach(cluster -> listRoom.addAll(cluster.rooms));
+        return listRoom;
+    }
+    public void setRoomName(){
+        List <String> multipleRoomNames = new ArrayList<>(Arrays.asList("Gallery","Dining room", "Lounge","Stateroom","Crew quarters"));
+        Collections.shuffle(multipleRoomNames);
+        List <String> singleRoomNames = new ArrayList<>(Arrays.asList("Bridge","Engine room","Sick bay", "Laundry room","Cargo hold"));
+        Collections.shuffle(singleRoomNames);
+        List<Room> allRoomsList = getAllRooms();
+        Collections.shuffle(allRoomsList);
+        for (int i=0; i<singleRoomNames.size();i++){
+            allRoomsList.get(0).setNameRoom(singleRoomNames.get(i));
+            allRoomsList.remove(0);
+        }
+    }
 }
 

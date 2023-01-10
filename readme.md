@@ -21,7 +21,7 @@
       
     -)Bridge: The room from which the ship is commanded
     -)Engine room: The room where the ship's engines are located
-    -)Galley: The ship's kitchen
+    -)Gallery: The ship's kitchen
     -)Dining room: The room where passengers and crew eat meals
     -)Lounge: A public room for relaxation and socializing
     -)Stateroom: A private room for passengers
